@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Oberheim DMX</title>
+<link href='https://fonts.googleapis.com/css?family=Arvo:700' rel='stylesheet' type='text/css'>
 <style>
-
 body {
     text-align: center;
     white-space: nowrap;
@@ -14,8 +14,7 @@ body {
     display: inline-block;
     height: 800px;
     width: 20px;
-    background: rgb(0, 162, 232);
-    color: white;
+    background-color:brown;
     margin: 0px;
     padding: 0px;
 }
@@ -23,15 +22,13 @@ body {
     display: inline-block;
     height: 800px;
     width: 1200px;
-    background: rgb(0, 162, 232);
     color: white;
-
     margin: 0px;
     padding: 0px;
 }
 
 .twodiv .power {
-    background-color: #fff;
+    background-color: #3d3c42;
     width: 100%;
     height: 30%;
 
@@ -42,24 +39,22 @@ body {
 .twodiv .power div {
     position:absolute;
     top:0px;
-    background-color: #fff;
     width: 1200px;;
     height: 100%;
-
     margin: 0px;
     padding: 0px;
 }
 
 .twodiv .power div hr {
     width: 100%;
-    background-color:blue;
+    background-color:#6eccff;
     height:3px;
     border: 0px;
 
 }
 
 .twodiv .faders {
-    background-color: #ccc;
+    background-color: #2e2d32;
     width: 100%;
     height: 70%;
 
@@ -68,7 +63,6 @@ body {
 }
 
 .twodiv .faders .lines {
-    background-color: #333;
     display: inline-block;
     height: 100%;
     width: 720px;
@@ -79,7 +73,6 @@ body {
 
 .twodiv .faders .lines .line {
     position: relative;
-    background-color: #999;
     display: inline-block;
     height: 100%;
     width: 90px;
@@ -88,7 +81,6 @@ body {
 .twodiv .faders .lines .line div {
     position:absolute;
     top:0px;
-    background-color: #999;
     display: block;
     height: 100%;
     width: 100%;
@@ -96,7 +88,6 @@ body {
 
 .twodiv .faders .lines .line div .fader {
     position:relative;
-    background-color: #999;
     display: block;
     margin-top: 40px;
     margin-left: auto;
@@ -121,25 +112,22 @@ body {
     position:relative;
     margin-left: auto;
     margin-right: auto;
-    background-color: #888;
+    background-color: #000;
     display: block;
     height: 60px;
     width: 60px;
 }
 
 .twodiv .faders .control {
-    background-color: #666;
     display: inline-block;
     height: 100%;
     width: 480px;
-
     margin: 0px;
     padding: 0px;
 }
 
 .twodiv .faders .control .beatcontrol {
     position: relative;
-    background-color: #999;
     display: inline-block;
     height: 100%;
     width: 192px;
@@ -148,7 +136,6 @@ body {
 .twodiv .faders .control .beatcontrol div {
     position:absolute;
     top:0px;
-    background-color: #999;
     display: block;
     height: 100%;
     width: 100%;
@@ -156,7 +143,6 @@ body {
 
 .twodiv .faders .control .beatcontrol div .fader {
     position:relative;
-    background-color: #999;
     display: block;
     margin-top: 40px;
     margin-left: auto;
@@ -166,7 +152,6 @@ body {
 
 .twodiv .faders .control .beatcontrol div .fader .metronome {
     position:relative;
-    background-color: #999;
     display: inline-block;
     height: 200px;
     width: 96px;
@@ -174,7 +159,6 @@ body {
 
 .twodiv .faders .control .beatcontrol div .fader .volume {
     position:relative;
-    background-color: #999;
     display: inline-block;
     height: 200px;
     width: 96px;
@@ -208,7 +192,7 @@ body {
     position:relative;
     margin-left: auto;
     margin-right: auto;
-    background-color: #888;
+    background-color: #000;
     display: inline-block;
     height: 60px;
     width: 60px;
@@ -216,7 +200,6 @@ body {
 
 .twodiv .faders .control .trackcontrol {
     position: relative;
-    background-color: #999;
     display: inline-block;
     height: 100%;
     width: 288px;
@@ -225,7 +208,6 @@ body {
 .twodiv .faders .control .trackcontrol div {
     position:absolute;
     top:0px;
-    background-color: #999;
     display: block;
     height: 100%;
     width: 100%;
@@ -238,7 +220,7 @@ body {
     text-align: center;
     vertical-align: middle;
     line-height: 60px;
-    background-color: #888;
+    background-color: #000;
     display: inline-block;
     height: 60px;
     width: 60px;
@@ -260,6 +242,10 @@ body {
 
 .recordbtn {
   background-color: #ccc !important;
+}
+
+.numbers{
+  font-family: 'Arvo', serif !important;
 }
 
 
@@ -384,10 +370,10 @@ body {
                                   PLAY/STOP
                                 </div></div><div class="trackcontrol"><div><br/><div class="display"></div>
                                   <br/><br/>
-                                                                <div class="pushbutton">7</div><div class="pushbutton">8</div><div class="pushbutton">9</div><br/>
-                                                                <div class="pushbutton">4</div><div class="pushbutton">5</div><div class="pushbutton">6</div><br/>
-                                                                <div class="pushbutton">1</div><div class="pushbutton">2</div><div class="pushbutton">3</div><br/>
-                                                                <div class="pushbutton"><</div><div class="pushbutton">0</div><div class="pushbutton">></div><br/>
+                                                                <div class="pushbutton numbers">7</div><div class="pushbutton numbers">8</div><div class="pushbutton numbers">9</div><br/>
+                                                                <div class="pushbutton numbers">4</div><div class="pushbutton numbers">5</div><div class="pushbutton numbers">6</div><br/>
+                                                                <div class="pushbutton numbers">1</div><div class="pushbutton numbers">2</div><div class="pushbutton numbers">3</div><br/>
+                                                                <div class="pushbutton numbers"><</div><div class="pushbutton numbers">0</div><div class="pushbutton numbers">></div><br/>
                                                                 <br/><br/>
                                                                 <div class="pushbutton"></div><div class="pushbutton"></div><div class="pushbutton"></div><div class="pushbutton"></div><br/>
                                                                 <div class="pushbutton recordbtn"></div><div class="pushbutton"></div><div class="pushbutton"></div><div class="pushbutton"></div><br/>
