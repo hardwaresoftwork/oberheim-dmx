@@ -94,6 +94,29 @@ body {
     width: 100%;
 }
 
+.twodiv .faders .lines .line div .fader {
+    position:relative;
+    background-color: #999;
+    display: block;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+    width: 60px;
+}
+
+.twodiv .faders .lines .line div .fader input[type=range][orient=vertical]
+{
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+    width: 8px;
+    height: 175px;
+    padding: 0 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .twodiv .faders .lines .line div .pushbutton {
     position:relative;
     margin-left: auto;
@@ -129,6 +152,29 @@ body {
     display: block;
     height: 100%;
     width: 100%;
+}
+
+.twodiv .faders .control .beatcontrol div .fader {
+    position:relative;
+    background-color: #999;
+    display: block;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+    width: 60px;
+}
+
+.twodiv .faders .control .beatcontrol div .fader input[type=range][orient=vertical]
+{
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+    width: 8px;
+    height: 175px;
+    padding: 0 5px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .twodiv .faders .control .beatcontrol div .pushbutton {
@@ -189,6 +235,7 @@ body {
   background-color: #ccc !important;
 }
 
+
 </style>
 </head>
 
@@ -196,7 +243,11 @@ body {
 
 <div class = "onediv"></div><div class = "twodiv"><div class = "power"><div><hr><hr></div></div><div class = "faders"><div class = "lines">
       <div class="line">
-        <div>BASS<br/><br/>
+        <div>
+          <div class="fader">
+          <input type="range" orient="vertical" />
+          </div>
+          BASS<br/><br/>
             <div class="pushbutton"></div>
             1
             <div class="pushbutton"></div>
@@ -205,7 +256,11 @@ body {
             3
         </div>
       </div><div class="line">
-        <div>SNARE<br/><br/>
+        <div>
+          <div class="fader">
+          <input type="range" orient="vertical" />
+          </div>
+          SNARE<br/><br/>
           <div class="pushbutton"></div>
           1
           <div class="pushbutton"></div>
@@ -214,7 +269,11 @@ body {
           3
       </div>
     </div><div class="line">
-        <div>HI-HAT<br/><br/>
+        <div>
+          <div class="fader">
+            <input type="range" orient="vertical" />
+          </div>
+          HI-HAT<br/><br/>
           <div class="pushbutton"></div>
           CLOSED
           <div class="pushbutton"></div>
@@ -222,7 +281,11 @@ body {
           <div class="pushbutton"></div>
           OPEN
       </div></div><div class="line">
-        <div>--TOMS--<br/><br/>
+        <div>
+          <div class="fader">
+          <input type="range" orient="vertical" />
+          </div>
+          --TOMS--<br/><br/>
           <div class="pushbutton"></div>
           1
           <div class="pushbutton"></div>
@@ -230,7 +293,11 @@ body {
           <div class="pushbutton"></div>
           3
       </div></div><div class="line">
-        <div>--TOMS--<br/><br/>
+        <div>
+          <div class="fader">
+          <input type="range" orient="vertical" />
+          </div>
+          --TOMS--<br/><br/>
           <div class="pushbutton"></div>
           4
           <div class="pushbutton"></div>
@@ -238,7 +305,11 @@ body {
           <div class="pushbutton"></div>
           6
       </div></div><div class="line">
-        <div>CYMBAL<br/><br/>
+        <div>
+          <div class="fader">
+          <input type="range" orient="vertical" />
+          </div>
+          CYMBAL<br/><br/>
           <div class="pushbutton"></div>
           RIDE 1
           <div class="pushbutton"></div>
@@ -246,7 +317,11 @@ body {
           <div class="pushbutton"></div>
           CRASH
       </div></div><div class="line">
-        <div>PERC 1<br/><br/>
+        <div>
+          <div class="fader">
+          <input type="range" orient="vertical" />
+          </div>
+          PERC 1<br/><br/>
           <div class="pushbutton"></div>
           TAMB 1
           <div class="pushbutton"></div>
@@ -254,7 +329,11 @@ body {
           <div class="pushbutton"></div>
           RIMSHOT
       </div></div><div class="line">
-        <div>PERC 2<br/><br/>
+        <div>
+          <div class="fader">
+          <input type="range" orient="vertical" />
+          </div>
+          PERC 2<br/><br/>
           <div class="pushbutton"></div>
           SHAKER 1
           <div class="pushbutton"></div>
@@ -263,7 +342,11 @@ body {
           CLAPS
       </div></div>
     </div><div class = "control">
-    <div class="beatcontrol"><div>METRONOME / VOLUME<br/><br/>
+    <div class="beatcontrol"><div>
+      <div class="fader">      
+      <input type="range" orient="vertical" />
+      <input type="range" orient="vertical" />
+      </div>METRONOME / VOLUME<br/><br/>
                                   <div class="pushbutton"></div><div class="pushbutton"></div><div class="pushbutton"></div>
                                   <br/><br/>
                                   <div class="pushbutton playbtn"></div><br/>
