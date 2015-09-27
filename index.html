@@ -162,10 +162,37 @@ body {
     margin-left: auto;
     margin-right: auto;
     height: 200px;
-    width: 60px;
 }
 
-.twodiv .faders .control .beatcontrol div .fader input[type=range][orient=vertical]
+.twodiv .faders .control .beatcontrol div .fader .metronome {
+    position:relative;
+    background-color: #999;
+    display: inline-block;
+    height: 200px;
+    width: 96px;
+}
+
+.twodiv .faders .control .beatcontrol div .fader .volume {
+    position:relative;
+    background-color: #999;
+    display: inline-block;
+    height: 200px;
+    width: 96px;
+}
+
+.twodiv .faders .control .beatcontrol div .fader .metronome input[type=range][orient=vertical]
+{
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+    width: 8px;
+    height: 175px;
+    padding: 0 5px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.twodiv .faders .control .beatcontrol div .fader .volume input[type=range][orient=vertical]
 {
     writing-mode: bt-lr; /* IE */
     -webkit-appearance: slider-vertical; /* WebKit */
@@ -343,9 +370,13 @@ body {
       </div></div>
     </div><div class = "control">
     <div class="beatcontrol"><div>
-      <div class="fader">      
-      <input type="range" orient="vertical" />
-      <input type="range" orient="vertical" />
+      <div class="fader">
+        <div class="metronome">
+          <input type="range" orient="vertical" />
+        </div>
+        <div class="volume">
+          <input type="range" orient="vertical" />
+        </div>
       </div>METRONOME / VOLUME<br/><br/>
                                   <div class="pushbutton"></div><div class="pushbutton"></div><div class="pushbutton"></div>
                                   <br/><br/>
