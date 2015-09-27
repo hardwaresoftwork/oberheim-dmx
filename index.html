@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Oberheim DMX</title>
+<style>
+
+body {
+    text-align: center;
+    white-space: nowrap;
+    margin: 0px;
+}
+.onediv {
+    display: inline-block;
+    height: 800px;
+    width: 20px;
+    background: rgb(0, 162, 232);
+    color: white;
+    margin: 0px;
+    padding: 0px;
+}
+.twodiv {
+    display: inline-block;
+    height: 800px;
+    width: 1200px;
+    background: rgb(0, 162, 232);
+    color: white;
+
+    margin: 0px;
+    padding: 0px;
+}
+
+.twodiv .power {
+    background-color: #fff;
+    width: 100%;
+    height: 30%;
+
+    margin: 0px;
+    padding: 0px;
+}
+
+.twodiv .faders {
+    background-color: #ccc;
+    width: 100%;
+    height: 70%;
+
+    margin: 0px;
+    padding: 0px;
+}
+
+.twodiv .faders .lines {
+    background-color: #333;
+    display: inline-block;
+    height: 100%;
+    width: 720px;
+
+    margin: 0px;
+    padding: 0px;
+}
+
+.twodiv .faders .lines .line {
+    position: relative;
+    background-color: #999;
+    display: inline-block;
+    height: 100%;
+    width: 90px;
+}
+
+.twodiv .faders .lines .line div {
+    position:absolute;
+    top:0px;
+    background-color: #999;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.twodiv .faders .lines .line div .pushbutton {
+    position:relative;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #888;
+    display: block;
+    height: 60px;
+    width: 60px;
+}
+
+.twodiv .faders .control {
+    background-color: #666;
+    display: inline-block;
+    height: 100%;
+    width: 480px;
+
+    margin: 0px;
+    padding: 0px;
+}
+
+.twodiv .faders .control .beatcontrol {
+    position: relative;
+    background-color: #999;
+    display: inline-block;
+    height: 100%;
+    width: 192px;
+}
+
+.twodiv .faders .control .beatcontrol div {
+    position:absolute;
+    top:0px;
+    background-color: #999;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.twodiv .faders .control .beatcontrol div .pushbutton {
+    position:relative;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #888;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+}
+
+.twodiv .faders .control .trackcontrol {
+    position: relative;
+    background-color: #999;
+    display: inline-block;
+    height: 100%;
+    width: 288px;
+}
+
+.twodiv .faders .control .trackcontrol div {
+    position:absolute;
+    top:0px;
+    background-color: #999;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.twodiv .faders .control .trackcontrol div .pushbutton {
+    position:relative;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 60px;
+    background-color: #888;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+}
+
+.twodiv .faders .control .trackcontrol div .display {
+    position:relative;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #888;
+    display: block;
+    height: 60px;
+    width: 240px;
+}
+
+.playbtn {
+  background-color: #fff !important;
+}
+
+.recordbtn {
+  background-color: #ccc !important;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class = "onediv"></div><div class = "twodiv"><div class = "power"></div><div class = "faders"><div class = "lines">
+      <div class="line">
+        <div>BASS
+            <div class="pushbutton"></div>
+            1
+            <div class="pushbutton"></div>
+            2
+            <div class="pushbutton"></div>
+            3
+        </div>
+      </div><div class="line">
+        <div>SNARE
+          <div class="pushbutton"></div>
+          1
+          <div class="pushbutton"></div>
+          2
+          <div class="pushbutton"></div>
+          3
+      </div>
+    </div><div class="line">
+        <div>HI-HAT
+          <div class="pushbutton"></div>
+          CLOSED
+          <div class="pushbutton"></div>
+          ACCENT
+          <div class="pushbutton"></div>
+          OPEN
+      </div></div><div class="line">
+        <div>--TOMS--
+          <div class="pushbutton"></div>
+          1
+          <div class="pushbutton"></div>
+          2
+          <div class="pushbutton"></div>
+          3
+      </div></div><div class="line">
+        <div>--TOMS--
+          <div class="pushbutton"></div>
+          4
+          <div class="pushbutton"></div>
+          5
+          <div class="pushbutton"></div>
+          6
+      </div></div><div class="line">
+        <div>CYMBAL
+          <div class="pushbutton"></div>
+          RIDE 1
+          <div class="pushbutton"></div>
+          RIDE 2
+          <div class="pushbutton"></div>
+          CRASH
+      </div></div><div class="line">
+        <div>PERC 1
+          <div class="pushbutton"></div>
+          TAMB 1
+          <div class="pushbutton"></div>
+          TAMB 2
+          <div class="pushbutton"></div>
+          RIMSHOT
+      </div></div><div class="line">
+        <div>PERC 2
+          <div class="pushbutton"></div>
+          SHAKER 1
+          <div class="pushbutton"></div>
+          SHAKER 2
+          <div class="pushbutton"></div>
+          CLAPS
+      </div></div>
+    </div><div class = "control">
+    <div class="beatcontrol"><div>METRONOME / VOLUME<br/><br/>
+                                  <div class="pushbutton"></div><div class="pushbutton"></div><div class="pushbutton"></div>
+                                  <br/><br/>
+                                  <div class="pushbutton playbtn"></div><br/>
+                                  PLAY/STOP
+                                </div></div><div class="trackcontrol"><div><br/><div class="display"></div>
+                                  <br/><br/>
+                                                                <div class="pushbutton">7</div><div class="pushbutton">8</div><div class="pushbutton">9</div><br/>
+                                                                <div class="pushbutton">4</div><div class="pushbutton">5</div><div class="pushbutton">6</div><br/>
+                                                                <div class="pushbutton">1</div><div class="pushbutton">2</div><div class="pushbutton">3</div><br/>
+                                                                <div class="pushbutton"><</div><div class="pushbutton">0</div><div class="pushbutton">></div><br/>
+                                                                <br/><br/>
+                                                                <div class="pushbutton"></div><div class="pushbutton"></div><div class="pushbutton"></div><div class="pushbutton"></div><br/>
+                                                                <div class="pushbutton recordbtn"></div><div class="pushbutton"></div><div class="pushbutton"></div><div class="pushbutton"></div><br/>
+
+                                </div></div>
+  </div>
+  </div>
+</div><div class = "onediv"></div>
+
+</body>
+
+</html>
