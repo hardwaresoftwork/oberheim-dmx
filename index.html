@@ -5,10 +5,22 @@
 <title>Oberheim DMX</title>
 <link href='https://fonts.googleapis.com/css?family=Arvo:700' rel='stylesheet' type='text/css'>
 <style>
+@font-face {
+  font-family: 'Handel Gothic';
+  src: url('assets/fonts/handel-gothic.TTF');
+}
+
 body {
     text-align: center;
     white-space: nowrap;
     margin: 0px;
+    font-family: 'Handel Gothic';
+}
+
+canvas{
+  border: 0;
+  padding: 0;
+  margin: 0;
 }
 .onediv {
     display: inline-block;
@@ -84,6 +96,8 @@ body {
     display: block;
     height: 100%;
     width: 100%;
+    font-family: 'Handel Gothic';
+
 }
 
 .twodiv .faders .lines .line div .fader {
@@ -253,7 +267,6 @@ body {
 </head>
 
 <body>
-
 <div class = "onediv"></div><div class = "twodiv"><div class = "power"><div><hr><hr></div></div><div class = "faders"><div class = "lines">
       <div class="line">
         <div>
@@ -368,7 +381,58 @@ body {
                                   <br/><br/>
                                   <div class="pushbutton playbtn"></div><br/>
                                   PLAY/STOP
-                                </div></div><div class="trackcontrol"><div><br/><div class="display"></div>
+                                </div></div><div class="trackcontrol"><div><br/><div class="display"><div>
+
+<svg class="seven-segment"
+     width="10" height="50"
+     viewBox="0 0 22 36" preserveAspectRatio="xMidYMid">
+  <g stroke="#000" fill="#000" stroke-width="0.2">
+    <polygon class="A" points=" 5, 4  7, 6 15, 6 17, 4 15, 2  7, 2">
+      <animate attributeName="opacity" begin="0s" dur="5s" repeatCount="15"
+               calcMode="discrete" fill="freeze"
+               values="1;0;1;1;0;1;1;1;1;1;"/>
+    </polygon>
+
+    <polygon class="B" points="18, 5 16, 7 16,15 18,17 20,15 20, 7">
+      <animate attributeName="opacity" begin="0s" dur="5s" repeatCount="15"
+               calcMode="discrete" fill="freeze"
+               values="1;1;1;1;1;0;0;1;1;1;"/>
+    </polygon>
+
+    <polygon class="C" points="18,19 16,21 16,29 18,31 20,29 20,21">
+      <animate attributeName="opacity" begin="0s" dur="5s" repeatCount="15"
+               calcMode="discrete" fill="freeze"
+               values="1;1;0;1;1;1;1;1;1;1;" />
+    </polygon>
+
+    <polygon class="D" points=" 5,32  7,34 15,34 17,32 15,30  7,30">
+      <animate attributeName="opacity" begin="0s" dur="5s" repeatCount="15"
+               calcMode="discrete" fill="freeze"
+               values="1;0;1;1;0;1;1;0;1;1;" />
+    </polygon>
+
+    <polygon class="E" points=" 4,19  2,21  2,29  4,31  6,29  6,21">
+      <animate attributeName="opacity" begin="0s" dur="5s" repeatCount="15"
+               calcMode="discrete"
+               fill="freeze"
+               values="1;0;1;0;0;0;1;0;1;0;" />
+    </polygon>
+
+    <polygon class="F" points=" 4, 5  2, 7  2,15  4,17  6,15  6, 7">
+      <animate attributeName="opacity" begin="0s" dur="5s" repeatCount="15"
+               calcMode="discrete" fill="freeze"
+               values="1;0;0;0;1;1;1;0;1;1;" />
+    </polygon>
+
+    <polygon class="G" points=" 5,18  7,20 15,20 17,18 15,16  7,16">
+      <animate attributeName="opacity" begin="0s" dur="5s" repeatCount="15"
+               calcMode="discrete" fill="freeze"
+               values="0;0;1;1;1;1;1;0;1;1;" />
+    </polygon>
+  </g>
+</svg>
+</div>
+</div>
                                   <br/><br/>
                                                                 <div class="pushbutton numbers">7</div><div class="pushbutton numbers">8</div><div class="pushbutton numbers">9</div><br/>
                                                                 <div class="pushbutton numbers">4</div><div class="pushbutton numbers">5</div><div class="pushbutton numbers">6</div><br/>
@@ -382,7 +446,5 @@ body {
   </div>
   </div>
 </div><div class = "onediv"></div>
-
 </body>
-
 </html>
