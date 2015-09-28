@@ -20,6 +20,7 @@ body {
     white-space: nowrap;
     margin: 0px;
     font-family: 'Handel Gothic';
+    font-size: 10px;
 }
 
 canvas{
@@ -234,6 +235,17 @@ canvas{
     width: 100%;
 }
 
+.twodiv .faders .control .trackcontrol div .textbtn {
+    position:relative;
+/*    font-family: 'Handel Gothic';*/
+    margin-left: auto;
+    margin-right: auto;
+/*    background-color: #000;*/
+    display: inline-block;
+    height: 10px;
+    width: 60px;
+}
+
 .twodiv .faders .control .trackcontrol div .pushbutton {
     position:relative;
     margin-left: auto;
@@ -258,18 +270,17 @@ canvas{
 }
 
 .playbtn {
-  background-color: #fff !important;
+  background-color: #f6faf9 !important;
 }
 
 .recordbtn {
-  background-color: #ccc !important;
+  background-color: #fe4c58 !important;
 }
 
 .numbers{
   font-family: 'Arvo', serif !important;
+  font-size: 18px;
 }
-
-
 </style>
 </head>
 
@@ -446,8 +457,11 @@ canvas{
                                                                 <div class="pushbutton numbers">1</div><div class="pushbutton numbers">2</div><div class="pushbutton numbers">3</div><br/>
                                                                 <div class="pushbutton numbers"><</div><div class="pushbutton numbers">0</div><div class="pushbutton numbers">></div><br/>
                                                                 <br/><br/>
+                                                                <div class="textbtn"></div><div class="textbtn">CHECK</div><div class="textbtn">PLAY</div><div class="textbtn">RECORD</div><br/>
                                                                 <div class="pushbutton"></div><div class="pushbutton"></div><div class="pushbutton"></div><div class="pushbutton"></div><br/>
+                                                                <div class="textbtn">SWING</div><div class="textbtn">SONG</div><div class="textbtn">EDIT</div><div class="textbtn">STEP</div><br/>
                                                                 <div class="pushbutton recordbtn"></div><div class="pushbutton"></div><div class="pushbutton"></div><div class="pushbutton"></div><br/>
+                                                                <div class="textbtn">RECORD</div><div class="textbtn">ERASE</div><div class="textbtn">COPY</div><div class="textbtn">LENGTH</div><br/>
 
                                 </div></div>
   </div>
