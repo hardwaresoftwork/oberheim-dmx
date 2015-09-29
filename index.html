@@ -503,6 +503,29 @@ var beatDemo = [
     {"kitIndex":0,"effectIndex":0,"tempo":120,"swingFactor":0,"effectMix":0.19718309859154926,"kickPitchVal":0.5,"snarePitchVal":0.5,"hihatPitchVal":0.5,"tom1PitchVal":0.5,"tom2PitchVal":0.5,"tom3PitchVal":0.5,"rhythm1":[2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"rhythm2":[0,0,0,0,2,0,0,0,0,0,0,0,2,0,0,0],"rhythm3":[0,0,0,0,0,0,2,0,2,0,0,0,0,0,0,0],"rhythm4":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0],"rhythm5":[0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0],"rhythm6":[0,0,0,0,0,0,0,2,0,2,2,0,0,0,0,0]}
 ];
 
+var keys = new Array( 256 );
+keys[65] = 60; // = C4 ("middle C")
+keys[87] = 61;
+keys[83] = 62;
+keys[69] = 63;
+keys[68] = 64; // KB-D
+keys[70] = 65; // = F4
+keys[84] = 66;
+keys[71] = 67;
+keys[89] = 68;
+keys[72] = 69;
+keys[85] = 70;
+keys[74] = 71;
+keys[75] = 72; // = C5
+keys[79] = 73;
+keys[76] = 74;
+keys[80] = 75;
+keys[186] = 76;
+keys[222] = 77; // = F5
+keys[221] = 78;
+keys[13] = 79;
+keys[220] = 80;
+
 function cloneBeat(source) {
     var beat = new Object();
 
@@ -585,24 +608,29 @@ Kit.prototype.load = function() {
 
     var pathName = this.pathName();
 
-    var kickPath = pathName + "kick.wav";
+    var kick1Path = pathName + "03_BASS_01.wav";
+    var kick2Path = pathName + "04_BASS_02.wav";
+    var kick3Path = pathName + "05_BASS_03.wav";
     var snarePath = pathName + "06_SNARE_01.wav";
     var hihatPath = pathName + "09_HI-HAT_CLOSED.wav";
     var tom1Path = pathName + "12_TOM_01.wav";
     var tom2Path = pathName + "13_TOM_02.wav";
     var tom3Path = pathName + "14_TOM_03.wav";
 
-    this.loadSample(0, kickPath, false);
-    console.log('yo');
-    this.loadSample(1, snarePath, false);
-    this.loadSample(2, hihatPath, true);  // we're panning only the hihat
-    this.loadSample(3, tom1Path, false);
-    this.loadSample(4, tom2Path, false);
-    this.loadSample(5, tom3Path, false);
+    this.loadSample(0, kick1Path, false);
+    this.loadSample(1, kick2Path, false);
+    this.loadSample(2, kick3Path, false);
+    this.loadSample(3, snarePath, false);
+    this.loadSample(4, hihatPath, true);  // we're panning only the hihat
+    this.loadSample(5, tom1Path, false);
+    this.loadSample(6, tom2Path, false);
+    this.loadSample(7, tom3Path, false);
 }
 
 var decodedFunctions = [
-function (buffer) { this.kickBuffer = buffer; },
+function (buffer) { this.kick1Buffer = buffer; },
+function (buffer) { this.kick2Buffer = buffer; },
+function (buffer) { this.kick3Buffer = buffer; },
 function (buffer) { this.snareBuffer = buffer; },
 function (buffer) { this.hihatBuffer = buffer; },
 function (buffer) { this.tom1 = buffer; },
@@ -710,7 +738,65 @@ function showPlayAvailable() {
     play.src = "images/btn_play.png";
 }
 
+function keyDown( ev ) {
+
+	if ((ev.keyCode==49)||(ev.keyCode==50)) {
+		if (ev.keyCode==49)
+			moDouble = true;
+		else if (ev.keyCode==50)
+			moQuadruple = true;
+		changeModMultiplier();
+	}
+
+	var note = keys[ev.keyCode];
+	if (note)
+    console.log( "key down: " + ev.keyCode + note );
+    if (note == 60) // A
+    {playNote(currentKit.kick1Buffer,  false, 0,0,-2,  0.5, 1, kickPitch,  0);}
+    if (note == 61) // W
+    {playNote(currentKit.kick2Buffer,  false, 0,0,-2,  0.5, 1, kickPitch,  0);}
+    if (note == 62) // S
+    {playNote(currentKit.kick3Buffer,  false, 0,0,-2,  0.5, 1, kickPitch,  0);}
+
+    if (note == 64) // D
+    {playNote(currentKit.snareBuffer,  false, 0,0,-2,  0.5, 1, kickPitch,  0);}
+
+    if (note == 67) // G
+    {playNote(currentKit.hihatBuffer,  false, 0,0,-2,  0.5, 1, kickPitch,  0);}
+
+    if (note == 71) // J
+    {playNote(currentKit.tom1,  false, 0,0,-2,  0.5, 1, kickPitch,  0);}
+    if (note == 72) // K
+    {playNote(currentKit.tom2,  false, 0,0,-2,  0.5, 1, kickPitch,  0);}
+    if (note == 74) // L
+    {playNote(currentKit.tom3,  false, 0,0,-2,  0.5, 1, kickPitch,  0);}
+
+	return false;
+}
+
+function keyUp( ev ) {
+	if ((ev.keyCode==49)||(ev.keyCode==50)) {
+		if (ev.keyCode==49)
+			moDouble = false;
+		else if (ev.keyCode==50)
+			moQuadruple = false;
+		changeModMultiplier();
+	}
+
+	var note = keys[ev.keyCode];
+	if (note)
+    console.log( "key up: " + ev.keyCode + note );
+		//noteOff( note + 12*(3-currentOctave) );
+    //if (note = 64)
+    //{playNote(currentKit.snareBuffer,  false, 0,0,-2,  0.5, 1, kickPitch,  0);}
+	//console.log( "key up: " + ev.keyCode );
+
+	return false;
+}
+
 function init() {
+  window.addEventListener('keydown', keyDown, false);
+  window.addEventListener('keyup', keyUp, false);
     // Let the beat demos know when all of their assets have been loaded.
     // Add some new methods to support this.
     /*
