@@ -504,7 +504,6 @@ canvas{
 
 window.onload = init;
 
-var timerWorker = null; // Worker thread to send us scheduling messages.
 var context;
 var convolver;
 var compressor;
@@ -695,15 +694,7 @@ Kit.prototype.loadSample = function(sampleID, url, mixToMono) {
 }
 
 function startLoadingAssets() {
-    /*
-    impulseResponseList = new Array();
 
-    for (i = 0; i < impulseResponseInfoList.length; i++) {
-        impulseResponseList[i] = new ImpulseResponse(impulseResponseInfoList[i].url, i);
-    }
-    */
-    // Initialize drum kits
-    console.log(kitName);
 //    var numKits = kitName.length;
     var numKits = 1;
     kits = new Array(numKits);
@@ -711,63 +702,12 @@ function startLoadingAssets() {
 //        kits[i] = new Kit(kitName[i]);
   //  }
     kits[0] = new Kit(kitName);
-    console.log(kits[0]);
-    /*
-    // Start loading the assets used by the presets first, in order of the presets.
-    for (var demoIndex = 0; demoIndex < 0; ++demoIndex) {
-      //  var effect = impulseResponseList[beatDemo[demoIndex].effectIndex];
-        var kit = kits[beatDemo[demoIndex].kitIndex];
-        console.log(kits[beatDemo[demoIndex].kitIndex]);
-        // These effects and kits will keep track of a particular demo, so we can change
-        // the loading status in the UI.
-        //effect.setDemoIndex(demoIndex);
-        kit.setDemoIndex(demoIndex);
-
-        effect.load();
-        kit.load();
-    }
-    */
-    // Then load the remaining assets.
-    // Note that any assets which have previously started loading will be skipped over.
 
     for (var i  = 0; i < numKits; i++) {
         kits[i].load();
     }
 
-
-    // Start at 1 to skip "No Effect"
-    //for (i = 1; i < impulseResponseInfoList.length; i++) {
-    //    impulseResponseList[i].load();
-    //}
-
-    // Setup initial drumkit
     currentKit = kits[kInitialKitIndex];
-    console.log(currentKit);
-}
-
-
-// This gets rid of the loading spinner in each of the demo buttons.
-function showDemoAvailable(demoIndex /* zero-based */) {
-    var url = demoButtonURL(demoIndex);
-    var n = demoIndex + 1;
-    var demoName = "demo" + n;
-    var demo = document.getElementById(demoName);
-    demo.src = url;
-
-    // Enable play button and assign it to demo 2.
-    if (demoIndex == 1) {
-        showPlayAvailable();
-        loadBeat(beatDemo[1]);
-
-    // Uncomment to allow autoplay
-    //     handlePlay();
-    }
-}
-
-// This gets rid of the loading spinner on the play button.
-function showPlayAvailable() {
-    var play = document.getElementById("play");
-    play.src = "images/btn_play.png";
 }
 
 function keyDown( ev ) {
@@ -829,35 +769,7 @@ function keyUp( ev ) {
 function init() {
   window.addEventListener('keydown', keyDown, false);
   window.addEventListener('keyup', keyUp, false);
-    // Let the beat demos know when all of their assets have been loaded.
-    // Add some new methods to support this.
-    /*
-    for (var i = 0; i < beatDemo.length; ++i) {
-        beatDemo[i].index = i;
-        beatDemo[i].isKitLoaded = false;
-        beatDemo[i].isEffectLoaded = false;
 
-        beatDemo[i].setKitLoaded = function() {
-            this.isKitLoaded = true;
-            this.checkIsLoaded();
-        };
-
-        beatDemo[i].setEffectLoaded = function() {
-            this.isEffectLoaded = true;
-            this.checkIsLoaded();
-        };
-
-        beatDemo[i].checkIsLoaded = function() {
-            if (this.isLoaded()) {
-                showDemoAvailable(this.index);
-            }
-        };
-
-        beatDemo[i].isLoaded = function() {
-            return this.isKitLoaded && this.isEffectLoaded;
-        };
-    }
-    */
     startLoadingAssets();
 
     // NOTE: THIS NOW RELIES ON THE MONKEYPATCH LIBRARY TO LOAD
@@ -896,92 +808,6 @@ function init() {
     // Create convolver for effect
     convolver = context.createConvolver();
     convolver.connect(effectLevelNode);
-
-/*
-    var elKitCombo = document.getElementById('kitcombo');
-    elKitCombo.addEventListener("mousedown", handleKitComboMouseDown, true);
-
-    var elEffectCombo = document.getElementById('effectcombo');
-    elEffectCombo.addEventListener("mousedown", handleEffectComboMouseDown, true);
-
-    document.body.addEventListener("mousedown", handleBodyMouseDown, true);
-
-    initControls();
-    updateControls();
-
-    var timerWorkerBlob = new Blob([
-        "var timeoutID=0;function schedule(){timeoutID=setTimeout(function(){postMessage('schedule'); schedule();},100);} onmessage = function(e) { if (e.data == 'start') { if (!timeoutID) schedule();} else if (e.data == 'stop') {if (timeoutID) clearTimeout(timeoutID); timeoutID=0;};}"]);
-
-    // Obtain a blob URL reference to our worker 'file'.
-    var timerWorkerBlobURL = window.URL.createObjectURL(timerWorkerBlob);
-
-    timerWorker = new Worker(timerWorkerBlobURL);
-    timerWorker.onmessage = function(e) {
-      schedule();
-    };
-    timerWorker.postMessage('init'); // Start the worker.
-*/
-}
-
-function initControls() {
-    // Initialize note buttons
-  //  initButtons();
-  //  makeKitList();
-  //  makeEffectList();
-
-    // sliders
-    /*
-    document.getElementById('effect_thumb').addEventListener('mousedown', handleSliderMouseDown, true);
-    document.getElementById('tom1_thumb').addEventListener('mousedown', handleSliderMouseDown, true);
-    document.getElementById('tom2_thumb').addEventListener('mousedown', handleSliderMouseDown, true);
-    document.getElementById('tom3_thumb').addEventListener('mousedown', handleSliderMouseDown, true);
-    document.getElementById('hihat_thumb').addEventListener('mousedown', handleSliderMouseDown, true);
-    document.getElementById('snare_thumb').addEventListener('mousedown', handleSliderMouseDown, true);
-    document.getElementById('kick_thumb').addEventListener('mousedown', handleSliderMouseDown, true);
-    document.getElementById('swing_thumb').addEventListener('mousedown', handleSliderMouseDown, true);
-
-    document.getElementById('effect_thumb').addEventListener('dblclick', handleSliderDoubleClick, true);
-    document.getElementById('tom1_thumb').addEventListener('dblclick', handleSliderDoubleClick, true);
-    document.getElementById('tom2_thumb').addEventListener('dblclick', handleSliderDoubleClick, true);
-    document.getElementById('tom3_thumb').addEventListener('dblclick', handleSliderDoubleClick, true);
-    document.getElementById('hihat_thumb').addEventListener('dblclick', handleSliderDoubleClick, true);
-    document.getElementById('snare_thumb').addEventListener('dblclick', handleSliderDoubleClick, true);
-    document.getElementById('kick_thumb').addEventListener('dblclick', handleSliderDoubleClick, true);
-    document.getElementById('swing_thumb').addEventListener('dblclick', handleSliderDoubleClick, true);
-
-    // tool buttons
-    document.getElementById('play').addEventListener('mousedown', handlePlay, true);
-    document.getElementById('stop').addEventListener('mousedown', handleStop, true);
-    document.getElementById('save').addEventListener('mousedown', handleSave, true);
-    document.getElementById('save_ok').addEventListener('mousedown', handleSaveOk, true);
-    document.getElementById('load').addEventListener('mousedown', handleLoad, true);
-    document.getElementById('load_ok').addEventListener('mousedown', handleLoadOk, true);
-    document.getElementById('load_cancel').addEventListener('mousedown', handleLoadCancel, true);
-    document.getElementById('reset').addEventListener('mousedown', handleReset, true);
-    document.getElementById('demo1').addEventListener('mousedown', handleDemoMouseDown, true);
-    document.getElementById('demo2').addEventListener('mousedown', handleDemoMouseDown, true);
-    document.getElementById('demo3').addEventListener('mousedown', handleDemoMouseDown, true);
-    document.getElementById('demo4').addEventListener('mousedown', handleDemoMouseDown, true);
-    document.getElementById('demo5').addEventListener('mousedown', handleDemoMouseDown, true);
-
-    var elBody = document.getElementById('body');
-    elBody.addEventListener('mousemove', handleMouseMove, true);
-    elBody.addEventListener('mouseup', handleMouseUp, true);
-
-    document.getElementById('tempoinc').addEventListener('mousedown', tempoIncrease, true);
-    document.getElementById('tempodec').addEventListener('mousedown', tempoDecrease, true);
-    */
-}
-
-function initButtons() {
-    var elButton;
-
-    for (i = 0; i < loopLength; ++i) {
-        for (j = 0; j < kNumInstruments; j++) {
-      //          elButton = document.getElementById(instruments[j] + '_' + i);
-      //          elButton.addEventListener("mousedown", handleButtonMouseDown, true);
-        }
-    }
 }
 
 function advanceNote() {
@@ -1121,80 +947,6 @@ function tempoDecrease() {
     document.getElementById('tempo').innerHTML = theBeat.tempo;
 }
 
-function handleSliderMouseDown(event) {
-    mouseCapture = event.target.id;
-
-    // calculate offset of mousedown on slider
-    var el = event.target;
-    if (mouseCapture == 'swing_thumb') {
-        var thumbX = 0;
-        do {
-            thumbX += el.offsetLeft;
-        } while (el = el.offsetParent);
-
-        mouseCaptureOffset = event.pageX - thumbX;
-    } else {
-        var thumbY = 0;
-        do {
-            thumbY += el.offsetTop;
-        } while (el = el.offsetParent);
-
-        mouseCaptureOffset = event.pageY - thumbY;
-    }
-}
-
-function handleSliderDoubleClick(event) {
-    var id = event.target.id;
-    if (id != 'swing_thumb' && id != 'effect_thumb') {
-        mouseCapture = null;
-        sliderSetValue(event.target.id, 0.5);
-        updateControls();
-    }
-}
-
-function handleMouseMove(event) {
-    if (!mouseCapture) return;
-
-    var elThumb = document.getElementById(mouseCapture);
-    var elTrack = elThumb.parentNode;
-
-    if (mouseCapture != 'swing_thumb') {
-        var thumbH = elThumb.clientHeight;
-        var trackH = elTrack.clientHeight;
-        var travelH = trackH - thumbH;
-
-        var trackY = 0;
-        var el = elTrack;
-        do {
-            trackY += el.offsetTop;
-        } while (el = el.offsetParent);
-
-        var offsetY = Math.max(0, Math.min(travelH, event.pageY - mouseCaptureOffset - trackY));
-        var value = 1.0 - offsetY / travelH;
-        elThumb.style.top = travelH * (1.0 - value) + 'px';
-    } else {
-        var thumbW = elThumb.clientWidth;
-        var trackW = elTrack.clientWidth;
-        var travelW = trackW - thumbW;
-
-        var trackX = 0;
-        var el = elTrack;
-        do {
-            trackX += el.offsetLeft;
-        } while (el = el.offsetParent);
-
-        var offsetX = Math.max(0, Math.min(travelW, event.pageX - mouseCaptureOffset - trackX));
-        var value = offsetX / travelW;
-        elThumb.style.left = travelW * value + 'px';
-    }
-
-    sliderSetValue(mouseCapture, value);
-}
-
-function handleMouseUp() {
-    mouseCapture = null;
-}
-
 function sliderSetValue(slider, value) {
     var pitchRate = Math.pow(2.0, 2.0 * (value - 0.5));
 
@@ -1311,37 +1063,6 @@ function handleButtonMouseDown(event) {
     }
 }
 
-function handleKitComboMouseDown(event) {
-    document.getElementById('kitcombo').classList.toggle('active');
-}
-
-function handleKitMouseDown(event) {
-    var index = kitNamePretty.indexOf(event.target.innerHTML);
-    theBeat.kitIndex = index;
-
-    //currentKit = kits[index];
-    currentKit = kits[0];
-    document.getElementById('kitname').innerHTML = kitNamePretty[index];
-}
-
-function handleBodyMouseDown(event) {
-    var elKitcombo = document.getElementById('kitcombo');
-    var elEffectcombo = document.getElementById('effectcombo');
-
-    if (elKitcombo.classList.contains('active') && !isDescendantOfId(event.target, 'kitcombo_container')) {
-        elKitcombo.classList.remove('active');
-        if (!isDescendantOfId(event.target, 'effectcombo_container')) {
-            event.stopPropagation();
-        }
-    }
-
-    if (elEffectcombo.classList.contains('active') && !isDescendantOfId(event.target, 'effectcombo')) {
-        elEffectcombo.classList.remove('active');
-        if (!isDescendantOfId(event.target, 'kitcombo_container')) {
-            event.stopPropagation();
-        }
-    }
-}
 
 function isDescendantOfId(el, id) {
     if (el.parentElement) {
@@ -1405,30 +1126,6 @@ function setEffectLevel() {
 }
 
 
-function handleDemoMouseDown(event) {
-    var loaded = false;
-
-    switch(event.target.id) {
-        case 'demo1':
-            loaded = loadBeat(beatDemo[0]);
-            break;
-        case 'demo2':
-            loaded = loadBeat(beatDemo[1]);
-            break;
-        case 'demo3':
-            loaded = loadBeat(beatDemo[2]);
-            break;
-        case 'demo4':
-            loaded = loadBeat(beatDemo[3]);
-            break;
-        case 'demo5':
-            loaded = loadBeat(beatDemo[4]);
-            break;
-    }
-
-    if (loaded)
-        handlePlay();
-}
 
 function handlePlay(event) {
     noteTime = 0.0;
@@ -1464,20 +1161,6 @@ function handleStop(event) {
         // turn off the stop button
         midiOut.send( [0x80, 7, 1] );
     }
-}
-
-function handleSave(event) {
-    toggleSaveContainer();
-    var elTextarea = document.getElementById('save_textarea');
-    elTextarea.value = JSON.stringify(theBeat);
-}
-
-function handleSaveOk(event) {
-    toggleSaveContainer();
-}
-
-function handleLoad(event) {
-    toggleLoadContainer();
 }
 
 function handleLoadOk(event) {
